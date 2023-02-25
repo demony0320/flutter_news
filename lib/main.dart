@@ -24,8 +24,7 @@ class Post {
 }
 
 Future<List<Post>> fetchPosts(http.Client client) async {
-  final response =
-      await client.get(Uri.parse('http://172.17.14.146:8000/scrap'));
+  final response = await client.get(Uri.parse('http://localhost:8000/scrap'));
   return compute(parsePosts, response.body); // came from foundation.dart
 }
 
@@ -59,6 +58,9 @@ class _MyAppState extends State<MyApp> {
       title: 'Fetch Data Example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textTheme: const TextTheme(
+            bodyMedium: TextStyle(color: Colors.purple, fontSize: 10),
+            titleMedium: TextStyle(fontSize: 10)),
       ),
       home: Scaffold(
         appBar: AppBar(
